@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Recorder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #video {
+            border: 1px solid #999;
+            width: 98%;
+            max-width: 860px;
+        }
+
+        #log {
+            width: 25rem;
+            height: 15rem;
+            border: 1px solid black;
+            padding: 0.5rem;
+            overflow: scroll;
+        }
+
+        .header-items {
+            text-align: center;
+        }
+
+        #app-controls {
+            display: flex;
+            justify-content: center;
+        }
+
+        #recording-area {
+            display: flex;
+            justify-content: center;
+        }
+
+        #recording-icon {
+            color: red;
+            font-weight: bolder;
+        }
+
+        #recording-status {
+            display: none;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="header-items">Screen Recorder</h1>
+    <h5 id="recording-status" class="header-items">
+        <i id="recording-icon" class="fa fa-circle"></i>&nbsp;
+        <span>Recording started</span>
+    </h5>
+    <section id="recording-area">
+        <video id="video" autoplay controls muted></video>
+    </section>
+    <p id="app-controls">
+        <button id="start">Start Capture</button>
+        <button id="stop">Stop Capture</button>
+    </p>
+
+    <br />
+
+    <strong>Log:</strong>
+    <br />
+    <pre id="log"></pre>
+    <!-- include adapter for srcObject shim -->
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
